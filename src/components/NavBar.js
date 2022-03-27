@@ -46,7 +46,7 @@ const NavBar = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        <Text fontSize="xl">New App</Text>
+        <Text fontSize="xl">Shoes App</Text>
         <Box display="flex" alignItems="center" gap="20px">
           <Box>
             <IconButton
