@@ -10,9 +10,10 @@ const CartCard = ({
   isDark,
   cartItems,
   removeFromCart,
+  index,
 }) => {
   const handleRemove = () => {
-    removeFromCart(title);
+    removeFromCart(index);
   };
 
   return (

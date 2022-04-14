@@ -1,5 +1,5 @@
 import { Box, Button, Image, Text } from "@chakra-ui/react";
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
 
 function useForceUpdate() {
   const [, setTick] = useState(0);
@@ -28,9 +28,10 @@ const Card = ({
     setSizeState(number);
   };
 
-  const handleColor = (currentColor) => {
+  const handleColor = (currentColor, index) => {
     setColorState(currentColor);
-    setImage(imageURL[colors.indexOf(colorState)]);
+    //let currentImage = imageURL[colors.indexOf(colorState)];
+    setImage(imageURL[index]);
     forceUpdate();
   };
 
@@ -44,9 +45,9 @@ const Card = ({
     };
     let found = cartItems.some(
       (item) =>
-        item.size === newObj.size &&
+        item.imageUrl === newObj.imageUrl &&
         item.color === newObj.color &&
-        item.title === newObj.title
+        item.size === newObj.size
     );
     found === false && addToCart(newObj);
   };
@@ -83,9 +84,12 @@ const Card = ({
       <Box display="flex" alignItems="center" gap="1em">
         <Text>Colors:</Text>
         <Box display="flex" alignItems="center" gap="5px">
-          {colors.map((item) => {
+          {colors.map((item, idx) => {
             return (
-              <Button bgColor={item} onClick={() => handleColor(item)}></Button>
+              <Button
+                bgColor={item}
+                onClick={() => handleColor(item, idx)}
+              ></Button>
             );
           })}
         </Box>

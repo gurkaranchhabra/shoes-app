@@ -72,7 +72,7 @@ const NavBar = ({
           <ModalBody minW="min-content">
             <Box display="flex" maxW="800px" gap="2em" marginBottom="2em">
               {cartItems.length > 0
-                ? cartItems.map((item) => (
+                ? cartItems.map((item, index) => (
                     <CartCard
                       imageURL={item.imageUrl}
                       title={item.title}
@@ -82,6 +82,7 @@ const NavBar = ({
                       isDark={item.isDark}
                       cartItems={cartItems}
                       removeFromCart={removeFromCart}
+                      index={index}
                     />
                   ))
                 : "No items in the cart. Please add some items!"}
